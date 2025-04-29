@@ -4,7 +4,6 @@ body {
     background-color: #d6f7d0;
 }
 
-/* Заголовки */
 h1 {
     color: #1a237e;
     font-size: 32px;
@@ -15,7 +14,6 @@ h2 {
     font-size: 26px;
 }
 
-/* Сусідні селектори */
 h1 + h2 {
     margin-top: -10px;
     color: #1900ff;
@@ -26,19 +24,16 @@ h2 ~ p {
     font-style: italic;
 }
 
-/* Списки */
 ul > li {
     margin-bottom: 5px;
     color: #ff00b3;
 }
 
-/* Користувацький список */
 ul.custom-list {
     list-style-type: square;
     padding-left: 20px;
 }
 
-/* Посилання */
 section a {
     color: #1976d2;
     text-decoration: none;
@@ -61,13 +56,11 @@ section a:hover {
     color: orange;
 }
 
-/* Перший елемент списку */
 .product-list li:first-child {
     font-weight: bold;
     color: green;
 }
 
-/* Таблиця */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -90,7 +83,6 @@ td img {
     border-radius: 8px;
 }
 
-/* Псевдоелементи */
 .promo::before {
     content: "🔥 ";
     font-size: 20px;
@@ -101,7 +93,6 @@ td img {
     font-size: 20px;
 }
 
-/* Блочний елемент */
 .promo {
     background-color: #e1f5fe;
     border: 1px solid #0288d1;
@@ -112,20 +103,17 @@ td img {
     position: relative;
 }
 
-/* Рядковий елемент */
 .label {
     font-weight: bold;
     color: #d32f2f;
 }
 
-/* Дочірній селектор */
 section > p {
     background-color: #e0e0e0;
     padding: 5px;
     border-left: 3px solid #616161;
 }
 
-/* Плаваючий елемент */
 .floating-frame {
     display: block;
     margin: 30px auto;
@@ -133,7 +121,6 @@ section > p {
     border-radius: 10px;
 }
 
-/* Зображення */
 img {
     max-width: 100%;
     height: auto;
