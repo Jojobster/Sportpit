@@ -19,7 +19,6 @@ function showDeveloperInfo(surname, name, position = "Розробник") {
     alert(`Розробник: ${surname} ${name}, посада: ${position}`);
 }
 
-// --- 3. Порівняння двох рядків (alert, умова) ---
 function compareUserStrings() {
     const str1 = prompt("Введіть перший рядок для порівняння:");
     const str2 = prompt("Введіть другий рядок для порівняння:");
@@ -43,7 +42,7 @@ window.onload = function () {
     document.body.style.background = 'blue';
     setTimeout(() => {
         document.body.style.background = '';
-    }, 30000);
+    }, 3000);
 };
 
 // --- 5. Робота з DOM (getElementById, querySelectorAll) ---
