@@ -1,115 +1,106 @@
-// --- 1. Діалог з користувачем (alert, prompt, confirm, умови) ---
+// === 1. ДІАЛОГ З КОРИСТУВАЧЕМ ===
 function userDialog() {
-    alert("Ласкаво просимо до магазину спортивного харчування!");
-
+    alert("Ласкаво просимо до нашого магазину!");
     const name = prompt("Як вас звати?");
     const isAdult = confirm("Вам є 18 років?");
 
     if (!isAdult) {
-        alert("Вибачте, доступ дозволено лише повнолітнім.");
-        location.href = "https://google.com"; // Перенаправлення
+        alert("Вибачте, доступ лише для повнолітніх.");
+        location.href = "https://google.com";
         return;
     }
 
-    alert(`Привіт, ${name}! Раді вас бачити у нашому магазині.`);
+    alert(`Привіт, ${name}! Гарного перегляду.`);
+
+    // Цикл для прикладу
+    for (let i = 1; i <= 3; i++) {
+        console.log(`Підказка №${i}`);
+    }
 }
 
-// --- 2. Інформація про розробника (функція з параметрами) ---
+// === 2. ІНФОРМАЦІЯ ПРО РОЗРОБНИКА ===
 function showDeveloperInfo(surname, name, position = "Розробник") {
     alert(`Розробник: ${surname} ${name}, посада: ${position}`);
 }
 
+// === 3. ПОРІВНЯННЯ РЯДКІВ ===
 function compareUserStrings() {
-    const str1 = prompt("Введіть перший рядок для порівняння:");
-    const str2 = prompt("Введіть другий рядок для порівняння:");
+    const str1 = prompt("Введіть перший рядок:");
+    const str2 = prompt("Введіть другий рядок:");
 
     if (str1 === null || str2 === null) {
-        alert("Скасовано порівняння.");
+        alert("Скасовано.");
         return;
     }
 
     if (str1 > str2) {
-        alert(`Рядок "${str1}" більший.`);
+        alert(`"${str1}" більший.`);
     } else if (str2 > str1) {
-        alert(`Рядок "${str2}" більший.`);
+        alert(`"${str2}" більший.`);
     } else {
         alert("Рядки однакові.");
     }
 }
 
-// --- 4. Зміна фону сторінки на 30 секунд (document, setTimeout) ---
-window.onload = function () {
-    document.body.style.background = 'blue';
-    setTimeout(() => {
-        document.body.style.background = '';
-    }, 3000);
-};
+// === 4. ЗМІНА ФОНУ НА 30 СЕКУНД ===
+document.body.style.background = "#e0ffe0";
+setTimeout(() => {
+    document.body.style.background = "";
+}, 30000);
 
-// --- 5. Робота з DOM (getElementById, querySelectorAll) ---
-function modifyDOM() {
+// === 5. МАНІПУЛЯЦІЇ З DOM ===
+window.onload = function () {
     // getElementById
-    const section = document.getElementById("unique-section");
-    if (section) {
-        const newParagraph = document.createElement("p");
-        const textNode = document.createTextNode("Цей розділ оновлений за допомогою getElementById.");
-        newParagraph.appendChild(textNode);
-        section.appendChild(newParagraph);
-    }
+    const title = document.getElementById("main-title");
+    title.textContent = "🏋️ Магазин спортивного харчування";
+    title.style.color = "#004488";
 
     // querySelectorAll
-    const links = document.querySelectorAll("a.nav-link");
-    links.forEach(link => {
-        link.style.border = "2px dashed red";
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.style.borderBottom = "2px dashed blue";
     });
-}
 
-// --- 6. Властивості DOM-вузлів ---
-function workWithNodeProperties() {
-    const firstPromo = document.querySelector(".promo");
-    if (firstPromo) {
-        console.log("innerHTML:", firstPromo.innerHTML);
-        console.log("outerHTML:", firstPromo.outerHTML);
-        console.log("textContent:", firstPromo.textContent);
-        if (firstPromo.firstChild) {
-            console.log("nodeValue / data:", firstPromo.firstChild.nodeValue || firstPromo.firstChild.data);
+    // innerHTML, outerHTML, textContent, nodeValue
+    const promo = document.querySelector(".promo");
+    if (promo) {
+        console.log("innerHTML:", promo.innerHTML);
+        console.log("outerHTML:", promo.outerHTML);
+        console.log("textContent:", promo.textContent);
+        if (promo.firstChild) {
+            console.log("nodeValue/data:", promo.firstChild.nodeValue || promo.firstChild.data);
         }
     }
-}
 
-// --- 7. Створення, вставка та видалення вузлів ---
-function createModifyElements() {
-    // Створення
-    const newParagraph = document.createElement("p");
-    const textNode = document.createTextNode("Цей елемент створено динамічно.");
-    newParagraph.appendChild(textNode);
+    // createElement + createTextNode + append
+    const info = document.createElement("p");
+    const text = document.createTextNode("💬 Новини: безкоштовна доставка при замовленні від 500 грн!");
+    info.appendChild(text);
+    document.body.append(info);
 
-    // Вставка
-    document.body.append(newParagraph);
-    document.body.prepend(newParagraph.cloneNode(true));
-    newParagraph.after("Після створеного параграфа");
+    // prepend
+    const promoLabel = document.createElement("span");
+    promoLabel.textContent = "🚀 Новинка!";
+    promo.prepend(promoLabel);
 
-    // Заміна
-    const replaceTarget = document.querySelector("ul.product-list li:last-child");
-    if (replaceTarget) {
-        const replacement = document.createElement("li");
-        replacement.textContent = "Замінено на цей елемент";
-        replaceTarget.replaceWith(replacement);
+    // after
+    const afterText = document.createElement("div");
+    afterText.textContent = "🛒 Додано нові товари!";
+    promo.after(afterText);
+
+    // replaceWith (останній елемент списку)
+    const lastItem = document.querySelector("ul.product-list li:last-child");
+    const replacement = document.createElement("li");
+    replacement.textContent = "🔁 Передтрен";
+    lastItem.replaceWith(replacement);
+
+    // remove
+    const toRemove = document.querySelector(".old-banner");
+    if (toRemove) {
+        toRemove.remove();
     }
+};
 
-    // Видалення
-    const removeTarget = document.querySelector(".label");
-    if (removeTarget) {
-        removeTarget.remove();
-    }
-
-    // document.write (лише для демонстрації)
-    document.write("<p style='color:blue;'>Цей текст вставлено через document.write.</p>");
-}
-
-// === ВИКЛИКИ ===
-userDialog();                          // 1. Діалог з користувачем
-showDeveloperInfo("Голуб", "Даніл");   // 2. Інформація про розробника
-compareUserStrings();  // 3. Порівняння рядків
-modifyDOM();                           // 5. Зміна DOM
-workWithNodeProperties();              // 6. Робота з властивостями вузлів
-createModifyElements();                // 7. Створення/вставка/видалення елементів
+// === ВИКЛИК ФУНКЦІЙ ===
+userDialog();
+showDeveloperInfo("Голуб", "Даніл");
+compareUserStrings();
